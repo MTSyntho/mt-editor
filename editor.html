@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>mt editor - Editor</title>
+		<meta name="title" content="mt editor - A Web Based Video Editor">
+		<meta name="description" content="Create Amazingly Edited Videos for free using your web browser!">
+		<link rel="stylesheet" href="editor.css">
+		<link rel="stylesheet" href="assets/css/satoshi.css">
+		<link rel="stylesheet" href="assets/fonts/web/inter.css">
+		<link rel="stylesheet" href="assets/fonts/roboto/style.css">
+		<!-- <script src="scripts/mainmenu.js"></script> -->
+	</head>
+	<body>
+		<div class=title-bar>
+			<p class=logo>mt.</p>
+			<p class=project-name>Project Name</p>
+		</div>
+		<div class=workspace>
+			<div class=top-half>
+				<div class=media>
+					<p>media panel</p>
+				</div>
+				<div class=preview>
+					<canvas width="400" height="225"></canvas>
+					<input type="range" min="0" max="100" value="0" class="progress" id="video-progress">
+					<div class=controls>
+						<button><img height=30 src=assets/icons/rewind.svg></button>
+						<button><img height=30 src=assets/icons/play.svg></button>
+						<button><img height=30 src=assets/icons/forward.svg></button>
+					</div>
+				</div>
+				<div class=editing>
+					<p>edit here</p>
+				</div>
+			</div>
+			<div class=bottom-half>
+				<div class=timeline>
+					<p>timeline</p>
+				</div>
+			</div>
+		</div>
+		<div class=bottom-bar>
+			<button>File</button>
+			<button>Edit</button>
+			<button>View</button>
+		</div>
+	</body>
+</html>
