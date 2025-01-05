@@ -104,11 +104,12 @@ p, h1, h2, h3, h4, h5, h6, button {
 	gap: 20px;
 }
 
-.media {
+.media-panel {
   border: 1px solid #ffffff50;
   border-radius: 20px;
   flex: 1;
   box-shadow: 0px 0px 20px #000000cc;
+  padding: 0;
 }
 
 .preview {
@@ -194,4 +195,78 @@ canvas {
 
 .controls img {
 	margin-top: 2.5px;
+}
+
+.bgtext {
+	font-size: 30px;
+	font-style: italic;
+	opacity: 0.2;
+	text-shadow: 0px 0px 10px #000000
+}
+
+.section-bar {
+	width: calc(100% - 40px);
+	height: 35px;
+	margin: 0;
+	/*background: red;*/
+	padding: 0;
+	padding-left: 20px;
+	padding-right: 20px;
+	display: flex;
+	flex-direction: row;
+	box-shadow: 0px 10px 20px #00000050;
+	background-color: #00000060;
+	border-radius: 20px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	/*border-bottom: 1px solid #00000050;*/
+	border-bottom: 1px solid #ffffff50;
+	align-items: center;
+
+}
+
+.safe-text {
+	margin: 0;
+	padding: 0;
+}
+
+.icon-txt {
+    background: none;
+    display: flex;
+    flex-direction: row;
+    height: 27px;
+    border: none;
+    border-radius: 10px;
+    align-items: center;
+    border: 1px solid #ffffff50;
+    margin-left: auto;
+    align-items: center;
+    gap: 5px;
+    transition-duration: 0.2s;
+}
+
+.icon-txt:hover {
+	background: #ffffff20;
+	border: 1px solid #ffffff00;
+}
+
+.icon-txt:active {
+	background: #00000020;
+}
+
+.media {
+	background-color: black;
+	background-image: url('file:///C:/users/user/documents/mt/CapCut/Images/capcut%20fullscreen.png');
+	background-size: cover;
+	width: 150px;
+	height: 84.375px;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally (optional) */
+    align-items: flex-end; /* Align items at the bottom */
+    padding: 10px; /* Optional padding */
+}
+
+.media-gradient {
+	/*z-index: 0*/
+	background: linear-gradient(#110b1750, #00000000);
 }

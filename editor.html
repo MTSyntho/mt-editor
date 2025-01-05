@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="assets/css/satoshi.css">
 		<link rel="stylesheet" href="assets/fonts/web/inter.css">
 		<link rel="stylesheet" href="assets/fonts/roboto/style.css">
+		<script src=uploadMedia.js></script>
 		<!-- <script src="scripts/mainmenu.js"></script> -->
 	</head>
 	<body>
@@ -17,8 +18,26 @@
 		</div>
 		<div class=workspace>
 			<div class=top-half>
-				<div class=media>
-					<p>media panel</p>
+				<div class=media-panel>
+					<div class=section-bar>
+						<p class=safe-text>Project Media</p>
+						<button onclick="uploadMedia()" class=icon-txt>
+							<img src=assets/icons/play.svg height=20>
+							<p class=safe-text>Import Media</p>
+						</button>
+						<input type="file" id="mediaUpload" style="display: none;" accept="image/*,video/*,audio/*"/>
+					</div>
+					<div class=imported-media>
+						<div class=media>
+							<p>Name</p>
+							<button>
+								<img src=assets/icons/play.svg>
+							</button>
+							<div class=media-gradient></div>
+						</div>
+					</div>
+					<!-- <p class=bgtext>media</p> -->
+
 				</div>
 				<div class=preview>
 					<canvas width="400" height="225"></canvas>

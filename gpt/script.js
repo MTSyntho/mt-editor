@@ -1,53 +1,35 @@
-document.getElementById('videoInput').addEventListener('change', function(event) {
-    const files = event.target.files;
-    const timelineContent = document.getElementById('timelineContent');
+const resizable = document.getElementById('resizable');
 
-    Array.from(files).forEach(file => {
-        const videoItem = document.createElement('div');
-        videoItem.classList.add('video-item');
-        
-        const videoElement = document.createElement('video');
-        videoElement.src = URL.createObjectURL(file);
-        videoElement.controls = true;
+// Define the total number of segments
+const totalSegments = 60;
+const minWidth = 60; // Minimum width in pixels (1 pixel per segment)
+const maxWidth = 600; // Maximum width in pixels (10 pixels per segment)
 
-        const resizeHandle = document.createElement('div');
-        resizeHandle.classList.add('resize-handle');
+resizable.style.width = `${minWidth}px`;
 
-        videoItem.appendChild(videoElement);
-        videoItem.appendChild(resizeHandle);
-        timelineContent.appendChild(videoItem);
+// Handle resizing by listening for the mouse events
+let isResizing = false;
 
-        // Resize functionality
-        let isResizing = false;
-        let startX;
-
-        resizeHandle.addEventListener('mousedown', (e) => {
-            isResizing = true;
-            startX = e.clientX;
-            document.addEventListener('mousemove', resize);
-            document.addEventListener('mouseup', stopResize);
-        });
-
-        function resize(e) {
-            if (!isResizing) return;
-            const widthDiff = e.clientX - startX;
-            const newWidth = Math.max(100, videoItem.offsetWidth + widthDiff); // Minimum width
-            videoItem.style.width = `${newWidth}px`;
-            startX = e.clientX; // Update start position
-        }
-
-        function stopResize() {
-            isResizing = false;
-            document.removeEventListener('mousemove', resize);
-            document.removeEventListener('mouseup', stopResize);
-            snapToFrame(videoItem); // Snap to nearest frame
-        }
-    });
+resizable.addEventListener('mousedown', function (e) {
+  isResizing = true;
 });
 
-function snapToFrame(videoItem) {
-    const frameWidth = 10; // Width of one frame (in pixels)
-    const currentWidth = videoItem.offsetWidth;
-    const snappedWidth = Math.round(currentWidth / frameWidth) * frameWidth; // Snap to nearest frame
-    videoItem.style.width = `${snappedWidth}px`;
-}
+document.addEventListener('mousemove', function (e) {
+  if (isResizing) {
+    let newWidth = e.clientX - resizable.getBoundingClientRect().left;
+
+    // Ensure the width is within the bounds of min and max
+    if (newWidth < minWidth) newWidth = minWidth;
+    if (newWidth > maxWidth) newWidth = maxWidth;
+
+    // Snap the width to the nearest segment
+    const segmentSize = maxWidth / totalSegments;
+    newWidth = Math.round(newWidth / segmentSize) * segmentSize;
+
+    resizable.style.width = `${newWidth}px`;
+  }
+});
+
+document.addEventListener('mouseup', function () {
+  isResizing = false;
+});
